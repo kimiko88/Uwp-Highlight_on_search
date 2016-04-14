@@ -22,4 +22,4 @@ In a few words:
 I know that can be implemented better but I search everywhere with no result :disappointed_relieved:
 So I hope that can help you and I wish that Microsoft add something to simplify this feature :eyes:
 
-If you like it put a shining :star:
+If you like it, put a shining :star:
