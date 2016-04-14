@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="HighlightOnSearch.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HighlightOnSearch"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <!-- VisualState to be triggered when window
+                         width is >=720 effective pixels. -->
+                    <AdaptiveTrigger MinWindowWidth="1024" />
+                </VisualState.StateTriggers>
+
+                <VisualState.Setters>
+                    <Setter Target="SearchBox.Width"
+                                Value="500" />
+                        <Setter Target="SearchBox.MaxWidth"
+                                Value="940" />
+                        <Setter Target="SearchBox.FontSize"
+                                Value="30" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <!-- VisualState to be triggered when window
+                         width is >=720 effective pixels. -->
+                    <AdaptiveTrigger MinWindowWidth="720" />
+                </VisualState.StateTriggers>
+
+                <VisualState.Setters>
+                        <Setter Target="SearchBox.Width"
+                                Value="440" />
+                        <Setter Target="SearchBox.MaxWidth"
+                                Value="660" />
+                        <Setter Target="SearchBox.FontSize"
+                                Value="25" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <!-- VisualState to be triggered when window
+                         width is >=720 effective pixels. -->
+                    <AdaptiveTrigger MinWindowWidth="200" />
+                </VisualState.StateTriggers>
+
+                <VisualState.Setters>
+                        <Setter Target="SearchBox.Width"
+                                Value="160" />
+                        <Setter Target="SearchBox.MaxWidth"
+                                Value="180" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="SearchBox" HorizontalAlignment="Center" Grid.Row="0" PlaceholderText="Text here to find" MinWidth="250" Margin="15" TextChanged="SearchBox_OnTextChanged"></TextBox>
+        <ScrollViewer Grid.Row="1"><!--Workaround to charge all rows of the list, avoid the automatic lazy loading of the rows inside a ListView-->
+            <ListView x:Name="ListOfSomething"  Margin="0,20,0,0"    
+                         SelectionMode="Single" Background="Transparent"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding}" 
+                          ItemTemplate="{StaticResource ExampleTemplate}">
+            </ListView>
+    </ScrollViewer>
+    </Grid>
+</Page>

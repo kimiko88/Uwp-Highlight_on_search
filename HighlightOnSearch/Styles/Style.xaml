@@ -1,0 +1,67 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:HighlightOnSearch="using:HighlightOnSearch">
+
+    <HighlightOnSearch:ListIndexCreator x:Key="ListIndexCreator"></HighlightOnSearch:ListIndexCreator>
+    <HighlightOnSearch:ListAboutCreator x:Key="ListAboutCreator"></HighlightOnSearch:ListAboutCreator>
+
+    <DataTemplate  x:Key="ExampleTemplate">
+        <UserControl>
+            <Grid BorderThickness="0,0,0,1.5" BorderBrush="LightGray">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <!-- VisualState to be triggered when window
+                         width is >=720 effective pixels. -->
+                                <AdaptiveTrigger MinWindowWidth="1024" />
+                            </VisualState.StateTriggers>
+
+                            <VisualState.Setters>
+                                <Setter Target="TxtIndex.FontSize"
+                                Value="25" />
+                                <Setter Target="TxtAbout.FontSize"
+                                Value="30" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <!-- VisualState to be triggered when window
+                         width is >=720 effective pixels. -->
+                                <AdaptiveTrigger MinWindowWidth="720" />
+                            </VisualState.StateTriggers>
+
+                            <VisualState.Setters>
+                                <Setter Target="TxtIndex.FontSize"
+                                Value="20" />
+                                <Setter Target="TxtAbout.FontSize"
+                                Value="25" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <RichTextBlock Margin="10,0,0,10" x:Name="TxtIndex" IsTextSelectionEnabled="False" FontWeight="Bold"  TextWrapping="Wrap"  FontSize="18">
+                        <Paragraph>
+                            <Run Text="{Binding Converter={StaticResource ListIndexCreator}}" />
+                        </Paragraph>
+                    </RichTextBlock>
+                    <RichTextBlock Margin="10,0,0,10" x:Name="TxtAbout" IsTextSelectionEnabled="False"  TextWrapping="Wrap"  FontSize="15">
+                        <Paragraph>
+                            <Run Text="{Binding Converter={StaticResource ListAboutCreator}}" />
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+            </Grid>
+        </UserControl>
+    </DataTemplate>
+
+</ResourceDictionary>
